@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react' 
 import './App.css';
+import Shape from './Shape';
+import Body from './Body';
+import {ThemeContext} from "./Theme";
 
 function App() {
+
+  const [theme, setTheme] = useState(false)
+
+  const [lat, setLat] = useState('')
+
+  const [long, setLong] = useState('')
+
+  const [currentStats, setCurrentStats] = useState()
+
+  
+  useEffect(async () => {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          setLat(position.coords.latitude)
+          setLong(position.coords.longitude)
+        })
+      }
+
+      await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=` + 'c43e90e680e057b9972dac0bc698453f')
+      .then(result => result.json())
+      .then(data => setCurrentStats(data))
+  },[lat,long])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeContext.Provider value = {{theme, setTheme}}>
+      <div className={`${theme ? 'AppON': 'AppOFF'}`}>
+        <Shape currentStats = {currentStats} />
+        <Body currentStats = {currentStats} />
     </div>
+    </ThemeContext.Provider>
   );
 }
 
