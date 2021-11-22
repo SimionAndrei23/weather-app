@@ -1,40 +1,41 @@
-import { useState, useEffect } from 'react' 
-import './App.css';
-import Shape from './Shape';
-import Body from './Body';
-import {ThemeContext} from "./Theme";
+import { useState, useEffect, useContext } from 'react' 
+import './App.css'
+import Shape from './Shape'
+import Body from './Body'
+import {Context} from "./ContextAPI"
+import { ContextWrapper } from './ContextAPI'
 
 function App() {
 
-  const [theme, setTheme] = useState(false)
+  const theme = useContext(ContextWrapper);
 
-  const [lat, setLat] = useState('')
+  const darkMode = theme.stateTheme.darkMode
 
-  const [long, setLong] = useState('')
+  //const [theme, setTheme] = useState(false)
 
-  const [currentStats, setCurrentStats] = useState()
 
-  
+  const lat = theme.stateWeather.lat
+
+  const long = theme.stateWeather.long
+
   useEffect(async () => {
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
-          setLat(position.coords.latitude)
-          setLong(position.coords.longitude)
+          theme.dispatchWeather({ type: 'Lat_Coords', payload: position.coords.latitude })
+          theme.dispatchWeather({ type: 'Long_Coords', payload: position.coords.longitude })
         })
       }
 
-      await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=` + 'c43e90e680e057b9972dac0bc698453f')
+      await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&units=metric&appid=` + 'c43e90e680e057b9972dac0bc698453f')
       .then(result => result.json())
-      .then(data => setCurrentStats(data))
+      .then(data => theme.dispatchWeather({ type: 'Current_Stats', payload: data}))
   },[lat,long])
 
   return (
-    <ThemeContext.Provider value = {{theme, setTheme}}>
-      <div className={`${theme ? 'AppON': 'AppOFF'}`}>
-        <Shape currentStats = {currentStats} />
-        <Body currentStats = {currentStats} />
-    </div>
-    </ThemeContext.Provider>
+      <div className={`${darkMode ? 'AppON': 'AppOFF'}`}>
+        <Shape />
+        <Body />
+      </div>
   );
 }
 

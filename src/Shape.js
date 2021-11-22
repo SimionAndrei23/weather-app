@@ -1,19 +1,24 @@
 import React, { useContext } from 'react'
 import './App.css';
-import { ThemeContext } from './Theme';
+import { Context } from './ContextAPI';
+import { ContextWrapper} from './ContextAPI'
 
 
 
-const Shape = ( {currentStats} ) => {
+const Shape = () => {
 
-    const {theme, setTheme} = useContext(ThemeContext);
+    const theme = useContext(ContextWrapper);
+
+    const currentStats = theme.stateWeather.currentStats
+
+    const darkMode = theme.stateTheme.darkMode
 
 
     const dayName = new Date(currentStats?.current?.dt * 1000).toLocaleDateString('en', {
         weekday: 'long'
     });
 
-    const changeToCelsius = +(currentStats?.current?.temp - 273.15).toFixed(0)
+    const changeToCelsius = +(currentStats?.current?.temp.toFixed(0))
 
     const changeToFahrenheit = +((changeToCelsius * 9.0/5.0) + 32.0) 
 
@@ -26,11 +31,17 @@ const Shape = ( {currentStats} ) => {
     const humidity = +(currentStats?.current?.humidity)
 
     const handleThemeToggle = () => {
-        setTheme(!theme);
+        //setTheme(!theme);
+        if(darkMode) {
+            theme.dispatchTheme({ type: 'LightMode'});
+        }
+        else {
+            theme.dispatchTheme({ type: 'DarkMode'})
+        }
     }
 
     return (
-        <div className = {`${theme ? 'shapeContainerON' : 'shapeContainerOFF'}`} >
+        <div className = {`${darkMode ? 'shapeContainerON' : 'shapeContainerOFF'}`} >
             <div className = 'header'>
                 <p> Calendar </p>
                 <div className = 'calendarContainer'>
@@ -44,10 +55,10 @@ const Shape = ( {currentStats} ) => {
                     <input type = 'checkbox' id = 'checkbox' />
                     <label for="checkbox" className = 'labelSwitch' onClick = {handleThemeToggle}>
                             <div className = 'iconImage'>
-                                <img src = 'https://i.ibb.co/tY2gqzN/sun-icon-removebg-preview.png' />
+                                <img src = 'https://i.ibb.co/wN42wBq/moon-removebg-preview.png' />
                             </div>
                             <div className = 'iconImage'>
-                                <img src = 'https://i.ibb.co/wN42wBq/moon-removebg-preview.png' />
+                                <img src = 'https://i.ibb.co/tY2gqzN/sun-icon-removebg-preview.png' />
                             </div>
                             <div className="ball"></div>
                     </label>
@@ -56,14 +67,14 @@ const Shape = ( {currentStats} ) => {
            <div className = 'weatherContainer'>
                 <div className = 'imageWeather'>
                     <div className = 'image'>
-                        <img src = {`http://openweathermap.org/img/w/${currentStats?.current?.weather[0]?.icon}.png`} />
+                        <img src = {`http://openweathermap.org/img/w/${currentStats?.current?.weather[0]?.icon}.png`} />  
                     </div>
                 </div>
                 <div className = 'tommorow'>
                     <div className = 'tommorowStats'>
                         <div className = 'today'>
-                            <h3> Today </h3>
-                            <span> / {dayName} </span>
+                            <h3>Today</h3>
+                            <span>/ {dayName} </span>
                         </div>
                         <div className = 'temperature'>
                             <h1> {changeToCelsius}{'°'}{'C'} </h1>
