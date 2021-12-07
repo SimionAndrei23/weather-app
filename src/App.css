@@ -4,11 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html,body {
   font-family: 'Dancing Script', cursive;
 }
-
 .AppON {
   display: flex;
   flex-direction: column;
@@ -27,7 +25,6 @@ html,body {
   background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   padding: 15px;
 }
-
 .shapeContainerON {
   display: flex;
   flex-direction: column;
@@ -38,7 +35,6 @@ html,body {
   border-radius: 50px;
   padding: 20px;
 }
-
 .shapeContainerOFF {
   display: flex;
   flex-direction: column;
@@ -50,7 +46,6 @@ html,body {
   border-radius: 50px;
   padding: 20px;
 }
-
 .header {
 
   display: flex;
@@ -58,7 +53,6 @@ html,body {
   justify-content: space-between;
 
 }
-
 .header > p
 {
   background-color: #4158D0;
@@ -68,14 +62,12 @@ html,body {
   font-weight: 500;
   font-size: 22px;
 }
-
 .calendarContainer
 {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-
 .calendarContainer > span
 {
   font-size: 20px;
@@ -85,7 +77,6 @@ html,body {
   -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
-
 .calendarImage
 {
   position: relative;
@@ -93,7 +84,6 @@ html,body {
   height: 2rem;
   overflow: hidden;
 }
-
 .calendarImage > img
 {
   position: absolute;
@@ -103,7 +93,6 @@ html,body {
   height: 100%;
   object-fit: cover;
 }
-
 .weatherContainer
 {
   display: flex;
@@ -112,21 +101,18 @@ html,body {
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0,0,0,0.08);
 }
-
 .imageWeather {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 50%;
 }
-
 .image {
   position: relative;
   width: 7rem;
   height: 7rem;
   overflow: hidden;
 }
-
 .image > img {
   position: absolute;
   top: 0;
@@ -135,7 +121,6 @@ html,body {
   height: 100%;
   object-fit: cover;
 }
-
 .tommorow
 {
   display: flex;
@@ -143,21 +128,18 @@ html,body {
   justify-content: center;
   width: 50%;
 }
-
 .tommorowStats
 {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .today
 {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-
 .today > h3
 {
   background-color: #4158D0;
@@ -167,7 +149,6 @@ html,body {
   font-weight: 500;
   font-size: 30px;
 }
-
 .today > span
 {
   margin-top: 15px;
@@ -175,7 +156,6 @@ html,body {
   opacity: 0.5;
   font-size: 20px;
 }
-
 .tommorowStats > span
 {
   color: black;
@@ -183,14 +163,12 @@ html,body {
   font-size: 20px;
   text-align: center;
 }
-
 .temperature
 {
   display: flex;
   align-items: center;
   gap: 4px;
 }
-
 .temperature > h1
 {
   font-size: 40px;
@@ -200,7 +178,6 @@ html,body {
   -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
-
 .temperature > span
 {
   color: black !important;
@@ -208,7 +185,6 @@ html,body {
   font-size: 20px;
   margin-top: 20px;
 }
-
 .stats
 {
   display: flex;
@@ -217,7 +193,6 @@ html,body {
   flex: 1;
   margin-top: 12px;
 }
-
 .statsTemperature
 {
   display: flex;
@@ -226,7 +201,6 @@ html,body {
   gap: 8px;
   flex: 1;
 }
-
 .statsTemperature > p
 {
   color: #000;
@@ -234,13 +208,11 @@ html,body {
   font-weight: bold;
   font-size: 18px;
 }
-
 .statsTemperature > span
 {
   opacity: 0.5;
   font-size: 20px;
 }
-
 .imageIcon
 {
   position: relative;
@@ -248,7 +220,6 @@ html,body {
   height: 2rem;
   overflow: hidden;
 }
-
 .imageIcon > img {
   position: absolute;
   top: 0;
@@ -257,7 +228,6 @@ html,body {
   height: 100%;
   object-fit: cover;
 }
-
 .bodyContainer {
   position: relative;
   display: flex;
@@ -266,7 +236,6 @@ html,body {
   margin-top: 10px;
   z-index: 100;
 }
-
 .underText {
   position: absolute;
   top: 0;
@@ -278,7 +247,6 @@ html,body {
   justify-content: center;
   z-index: -1;
 }
-
 .underText > h1 {
   font-size: 40px;
   font-weight: 500;
@@ -291,7 +259,6 @@ html,body {
   opacity: 0.2;
   text-shadow: 2px 2px #89f7fe;
 }
-
 .dayWrapper
 {
   display: flex;
@@ -302,19 +269,16 @@ html,body {
   margin-top: 5px;
   flex: 1;
 }
-
 .dayWrapper > span:nth-child(1)
 {
   opacity: 0.5;
   font-size: 20px;
 }
-
 .dayWrapper > span:nth-child(2) 
 {
   opacity: 0.7;
   font-size: 20px;
 }
-
 .dayWrapper > span 
 {
   color: #fff;
@@ -322,7 +286,6 @@ html,body {
   width: 5rem;
   text-align: flex-start;
 }
-
 .dayStats
 {
   display: flex;
@@ -330,14 +293,12 @@ html,body {
   gap: 10px;
   width: 8rem;
 }
-
 .dayStats > span
 {
   color: #fff;
   opacity: 0.7;
   text-align: center;
 }
-
 .imageStats
 {
   position: relative;
@@ -346,7 +307,6 @@ html,body {
   overflow: hidden;
   display: flex;
 }
-
 .imageStats > img
 {
   position: absolute;
@@ -356,7 +316,6 @@ html,body {
   height: 100%;
   object-fit: cover;
 }
-
 .dayTemp
 {
   display: flex;
@@ -364,7 +323,6 @@ html,body {
   gap: 8px;
   width: 6rem;
 }
-
 .dayTemp > span:nth-child(1)
 {
   color: #fff;
@@ -373,7 +331,6 @@ html,body {
   width: 50%;
   text-align: center;
 }
-
 .dayTemp > span:nth-child(2)
 {
   color: #fff;
@@ -382,7 +339,6 @@ html,body {
   width: 50%;
   text-align: center;
 }
-
 .labelSwitch {
     position: relative;
     background-color: #485461;
@@ -397,15 +353,12 @@ html,body {
     transition: 0.5s ease-out;
     cursor: pointer;
 }
-
 .labelSwitch:hover
 {
   -webkit-box-shadow: 5px 4px 23px 6px #90D0C7; 
   box-shadow: 5px 4px 23px 6px #90D0C7;
 }
-
 .labelSwitch .ball {
-
   position: absolute;
   height: 20px;
   width: 20px;
@@ -416,20 +369,16 @@ html,body {
   border-radius: 50%;
   transition: 0.5s ease-in-out;
 }
-
 #checkbox
 {
     opacity: 0;
     position: absolute;
 }
-
 #checkbox:checked + .labelSwitch .ball
 {
     transform: translateX(40px) rotate(90deg);
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
-
-
 .iconImage
 {
   position: relative;
@@ -437,7 +386,6 @@ html,body {
   height: 15px;
   overflow: hidden;
 }
-
 .iconImage > img
 {
   position: absolute;
@@ -447,8 +395,6 @@ html,body {
   height: 100%;
   object-fit: cover;
 }
-
-
 @media (max-width: 768px) {
 
   .today > h3

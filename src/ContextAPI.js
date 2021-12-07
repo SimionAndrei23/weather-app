@@ -6,7 +6,6 @@ export const ContextWrapper = createContext();
 const initialThemeSwitch = { darkMode: false}
 
 const initialStatsWeather = {
-
     lat: '',
     long: '',
     currentStats: {}

@@ -8,19 +8,13 @@ import { ContextWrapper } from './ContextAPI'
 function App() {
 
   const theme = useContext(ContextWrapper);
-
   const darkMode = theme.stateTheme.darkMode
-
-  //const [theme, setTheme] = useState(false)
-
-
   const lat = theme.stateWeather.lat
-
   const long = theme.stateWeather.long
 
   useEffect(async () => {
       if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
+        return navigator.geolocation.getCurrentPosition(position => {
           theme.dispatchWeather({ type: 'Lat_Coords', payload: position.coords.latitude })
           theme.dispatchWeather({ type: 'Long_Coords', payload: position.coords.longitude })
         })
