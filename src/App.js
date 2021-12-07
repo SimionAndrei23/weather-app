@@ -14,7 +14,7 @@ function App() {
 
   useEffect(async () => {
       if(navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(position => {
           theme.dispatchWeather({ type: 'Lat_Coords', payload: position.coords.latitude })
           theme.dispatchWeather({ type: 'Long_Coords', payload: position.coords.longitude })
         })
